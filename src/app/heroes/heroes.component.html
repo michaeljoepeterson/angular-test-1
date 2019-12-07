@@ -1,0 +1,38 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!--repeater directive loops through an array and repeats host element
+        in this case it is li and repeats for each hero
+        heroes is the array property in class 
+        hero represents the ind hero
+        able to pass hero to onSelect because in for we defined hero
+        class.selected = class binding will toggle the selected class if the hero == the selected hero
+        <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+    -->
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+    </li>
+</ul>
+<!--angular if won't display this if there is no selected hereo and there is no selected hero at the start of the app -->
+<!-- added to detail component
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}}</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+        <label>name: 
+            angular two binding so data flows from class to screen, basically a way to rerender like in react
+            <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+        </label>
+    </div>
+</div>
+-->
+<!--dont need to worry about importing if using ng generate component since it will add all necesssary files and ref to app.module
+heros component is the parent and hero-detail is the child component, one way binding since heroes component is passing data to hero-detail component
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+-->
+
+
